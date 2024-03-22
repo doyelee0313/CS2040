@@ -1,0 +1,281 @@
+import java.io.*;
+import java.util.*;
+
+public class prep {
+
+    public static class IntPair {
+        private int first;
+        private int second;
+
+        public IntPair(int first, int second) {
+            this.first = first;
+            this.second = second;
+        }
+
+        public int getFirst() {
+            return first;
+        }
+
+        public int getSecond() {
+            return second;
+        }
+    }
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        PrintWriter pw = new PrintWriter(System.out);
+
+        //input//
+
+        //그냥 숫자 받기
+        int N = Integer.parseInt(br.readLine());
+
+        /* space 로 나누기
+        String[] token = br.readLine().split(" ");
+
+        long R = Integer.parseInt(parts[0]), C = Integer.parseInt(parts[1]);
+        int F = Integer.parseInt(parts[2]), S = Integer.parseInt(parts[3]), G = Integer.parseInt(parts[4]);
+
+        or
+
+        //특정 
+        String[] parts = match[j].split(":"); 
+        String FirstScoreString = parts[0]; 
+        String SecondScoreString = parts[1];
+        */
+
+        /* stringtokenizer(나누는 단위 붙이기)
+        StringTokenizer st = new StringTokenizer(br.readLine());
+        
+        String cmd = st.nextToken();
+        */
+
+        /* input 없애서 정리하는 법
+        //해당되는거 없애기
+        String input = "doye:";
+        String result = input.replace(":", "");
+        System.out.println(result);
+
+        or
+        //마지막꺼 없애기       
+        String input = "doye:";
+        String result = input.substring(0, input.length() - 1);
+        System.out.println(result);
+        */
+
+        /*
+         * sorting
+         */
+
+         /* 
+        //sorting ideal
+        for (int i = 0; i < F; i++) {
+            Collections.sort(ideal[i], (pair1, pair2) -> {
+                // compare based on the first element
+                int compareFirst = pair1.getrow().compareTo(pair2.getrow());
+
+                // compare based on the second element 
+                if (compareFirst == 0) {
+                    return pair1.getcolumn().compareTo(pair2.getcolumn());
+                }
+
+                return compareFirst;
+            });
+        }
+
+        TreeSet<IntPair> pairSet = new TreeSet<>(new Comparator<IntPair>() {
+            public int compare(IntPair o1, IntPair o2) {
+                int compare1 = Integer.compare(o1.getFirst(), o2.getFirst());
+                //return compare1;
+                int compare2 = Integer.compare(o1.getSecond(), o2.getSecond());
+                return (compare1 == 0) ? compare2 : compare1;
+            }
+        });
+
+         */
+
+
+//comparable
+
+class Student implements Comparable<Student> {
+    private String name;
+    private int id;
+
+    public Student(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    // Implement compareTo to define the natural ordering based on student ID.
+    @Override
+    public int compareTo(Student other) {
+        return this.id - other.id;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (ID: " + id + ")";
+    }
+}
+
+public class ComparableExample {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Alice", 101));
+        students.add(new Student("Bob", 102));
+        students.add(new Student("Charlie", 100));
+
+        Collections.sort(students); // Sorts based on student IDs
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+}
+
+//comparator 
+
+class Student {
+    private String name;
+    private int id;
+
+    public Student(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public String toString() {
+        return name + " (ID: " + id + ")";
+    }
+}
+
+class StudentNameComparator implements Comparator<Student> {
+    @Override
+    public int compare(Student s1, Student s2) {
+        return s1.getName().compareTo(s2.getName());
+    }
+}
+
+public class ComparatorExample {
+    public static void main(String[] args) {
+        List<Student> students = new ArrayList<>();
+        students.add(new Student("Alice", 101));
+        students.add(new Student("Bob", 102));
+        students.add(new Student("Charlie", 100));
+
+        // Sort students based on their names using a custom Comparator.
+        Collections.sort(students, new StudentNameComparator());
+
+        for (Student student : students) {
+            System.out.println(student);
+        }
+    }
+}
+
+//compare example
+
+// this happens to be a stable sort as a String is not a primitive
+Arrays.sort(names, new Comparator<String>() {
+public int compare(String s1, String s2) {
+return s1.substring(0, 2).compareTo(s2.substring(0, 2));
+}
+});
+
+
+
+//reverse ordering
+Collections.reverseOrder();
+
+//or 
+
+class queueComparator implements Comparator<Integer> {
+    public int compare(Integer int1, Integer int2) {
+        return int2 - int1; 
+    }
+}
+
+//natural ordering
+sort(List<T> list);
+
+//or
+
+
+sort(List<T> list, Comparator<? super T> c);
+
+
+
+//arraylist
+
+        ArrayList<String> line = new ArrayList<String>();
+
+
+        pw.close();
+    }
+//treeset printout
+
+    // Iterate through the TreeSet and print each element
+    for (String element : treeSet) {
+        System.out.println(element);
+    }
+
+//바로 프로그램 멈추기
+
+    System.exit(0); //immediately stop the programme
+
+//pairlist 뽑아내기
+
+    /* 
+    for (Pair<Integer, Integer> pair : pairList) {
+        int first = pair.getFirst();
+        int second = pair.getSecond();
+        //System.out.println("pairList for 1: " + "(" + first + ", " + second + ")");
+    } 
+        */
+
+//treemap 뽑아내기
+
+    public class TreeMapPrintout {
+        public static void main(String[] args) {
+            // Create a TreeMap and add key-value pairs
+            TreeMap<String, Integer> treeMap = new TreeMap<>();
+            treeMap.put("Apple", 3);
+            treeMap.put("Banana", 5);
+            treeMap.put("Cherry", 2);
+
+            // Iterate through the TreeMap and print each entry (key-value pair)
+            for (Map.Entry<String, Integer> entry : treeMap.entrySet()) {
+                System.out.println(entry.getKey() + ": " + entry.getValue());
+            }
+        }
+    }
+
+//submap method
+
+    // display data between ["f".."m") ('felix' is included, martin' is excluded)
+    SortedMap<String, Integer> res = mapper.subMap("f", "m");
+    System.out.println(res.keySet());
+    System.out.println(res.values());
+
+
+//binary search
+    int index = Collections.binarySearch(sortedList, target);
+
+//fill 
+    Collections.fill(numbers, 0); // Fill the list with zeros
+
+//copy
+    List<Integer> sourceList = new ArrayList<>();
+    List<Integer> targetList = new ArrayList<>();
+    Collections.addAll(sourceList, 1, 2, 3);
+    Collections.copy(targetList, sourceList);
+
+
+}
